@@ -14,6 +14,11 @@ namespace DemoBase.Repository
             set { _ctx = value; }
         }
 
+        public EntityRepository(DbContext context)
+        {
+            Context = context;
+        }
+
         public DbSet<T> Table
         {
             get

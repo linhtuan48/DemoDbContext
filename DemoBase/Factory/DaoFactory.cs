@@ -7,9 +7,9 @@ namespace DemoBase.Factory
     public class DaoFactory : IDaoFactory
     {
         private DbContext _ctx;
-        private Dictionary<Type, DbContext> _ctxCollection;
+        private readonly Dictionary<Type, DbContext> _ctxCollection;
         private bool _disposed;
-        private object _obj = new object();
+        private readonly object _obj = new object();
 
         public DaoFactory()
         {
@@ -54,7 +54,7 @@ namespace DemoBase.Factory
                     }
                 }
 
-                _ctxCollection.Clear();
+                if (_ctxCollection != null) _ctxCollection.Clear();
             }
 
             GC.SuppressFinalize(this);

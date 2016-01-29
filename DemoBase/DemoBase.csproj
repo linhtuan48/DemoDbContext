@@ -54,7 +54,10 @@
     <Compile Include="Infrastructure\BaseContext.cs" />
     <Compile Include="Factory\IDaoFactory.cs" />
     <Compile Include="Infrastructure\ContactDbContext.cs" />
+    <Compile Include="Infrastructure\DemoDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryTable\ICornerstoneListsRepository.cs" />
+    <Compile Include="RepositoryTable\Implementation\CornerstoneListsRepository.cs" />
     <Compile Include="Repository\EntityRepository.cs" />
     <Compile Include="Repository\IEntityRepository.cs" />
     <Compile Include="Table\Cornerstone_Lists.cs" />

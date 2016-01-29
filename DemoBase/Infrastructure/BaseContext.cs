@@ -9,8 +9,8 @@ namespace DemoBase.Infrastructure
             Database.SetInitializer<TContext>(null);
         }
 
-        protected BaseContext()
-            : base("name=RemoveBackgroundEntities")
+        protected BaseContext(string s)
+            : base(s)
         { }
     }
 }
