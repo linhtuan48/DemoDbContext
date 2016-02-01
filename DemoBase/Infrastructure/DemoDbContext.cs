@@ -1,5 +1,5 @@
-﻿using System.Data.Entity;
-using DemoBase.Table;
+﻿using DemoBase.Table;
+using System.Data.Entity;
 
 namespace DemoBase.Infrastructure
 {
@@ -12,7 +12,7 @@ namespace DemoBase.Infrastructure
             Configuration.ProxyCreationEnabled = false;
         }
 
-
+        public DbSet<CornerstoneLists> CornerstoneLists { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

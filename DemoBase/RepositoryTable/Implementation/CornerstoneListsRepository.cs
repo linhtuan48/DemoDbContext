@@ -9,19 +9,19 @@ namespace DemoBase.RepositoryTable.Implementation
 {
     public class CornerstoneListsRepository : EntityRepository<CornerstoneLists>, ICornerstoneListsRepository
     {
-        private readonly IDaoFactory _daoFactory;
+        private IDaoFactory _daoFactory;
 
-        public CornerstoneListsRepository(IDaoFactory daoFactory) : base(daoFactory.GetContext<ContactDbContext>())
+        public CornerstoneListsRepository(IDaoFactory daoFactory)
+            : base(daoFactory)
         {
             _daoFactory = daoFactory;
         }
 
         public List<CornerstoneLists> GetListCornerstoneLists()
         {
-            //var context = _daoFactory.GetContext<>()
-            var demoOtherContext = _daoFactory.GetContext<DemoDbContext>();
-            
-            return Table.ToList();
+            var demoOtherContext = Bind<DemoDbContext>().CornerstoneLists.ToList();
+            return demoOtherContext;
+            // return Table.ToList();
         }
     }
 }

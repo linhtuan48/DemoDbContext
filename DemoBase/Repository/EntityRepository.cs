@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DemoBase.Factory;
+using System;
 using System.Data.Entity;
 
 namespace DemoBase.Repository
@@ -6,17 +7,18 @@ namespace DemoBase.Repository
     public class EntityRepository<T> : IEntityRepository<T> where T : class
     {
         private DbContext _ctx;
+        private IDaoFactory _factory;
         private DbSet<T> _dbSet;
 
-        public DbContext Context
+        public TC Bind<TC>() where TC : DbContext
         {
-            get { return _ctx; }
-            set { _ctx = value; }
+            _ctx = _factory.GetContext<TC>();
+            return _ctx as TC;
         }
 
-        public EntityRepository(DbContext context)
+        public EntityRepository(IDaoFactory factory)
         {
-            Context = context;
+            _factory = factory;
         }
 
         public DbSet<T> Table
