@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DemoBase.Factory;
 using DemoBase.Infrastructure;
@@ -19,8 +20,23 @@ namespace DemoBase.RepositoryTable.Implementation
 
         public List<CornerstoneLists> GetListCornerstoneLists()
         {
-            var demoOtherContext = Bind<DemoDbContext>().CornerstoneLists.ToList();
-            return demoOtherContext;
+            //var demoOtherContext = Bind<DemoDbContext>().CornerstoneLists.ToList();
+            var contactDBcontext = Bind<ContactDbContext>();
+            contactDBcontext.CornerstoneLists.Add(new CornerstoneLists
+            {
+                Id = Guid.NewGuid(),
+                Name = "ContactContext",
+                Url = string.Empty
+            });
+            Commit();
+            var demoOtherContext = Bind<DemoDbContext>().CornerstoneLists.Add(new CornerstoneLists
+            {
+                Id = Guid.NewGuid(),
+                Name = "DBcontext",
+                Url = string.Empty
+            });
+            Commit();
+            return null;
             // return Table.ToList();
         }
     }

@@ -18,7 +18,7 @@ namespace DemoBase.Factory
 
         public T GetContext<T>() where T : DbContext
         {
-            if (_ctx == null)
+            if (_ctx == null || typeof(T) != _ctx.GetType())
             {
                 lock (_obj)
                 {

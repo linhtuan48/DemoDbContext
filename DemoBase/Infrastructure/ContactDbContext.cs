@@ -11,6 +11,9 @@ namespace DemoBase.Infrastructure
             Configuration.LazyLoadingEnabled = true;
             Configuration.ProxyCreationEnabled = false;
         }
+
+        public DbSet<CornerstoneLists> CornerstoneLists { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CornerstoneLists>();
